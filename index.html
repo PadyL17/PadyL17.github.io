@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#16161e;
+  color:white;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* BACKGROUND IMAGE BLUR */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
+    url("cyberpunk.jpg");
+  background-size:cover;
+  background-position:center;
+  filter:blur(10px);
+  transform:scale(1.1);
+  z-index:-20;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 60px;
+  background:rgba(22,22,30,0.7);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(34,211,238,0.1);
+  z-index:999;
+}
+
+nav h1{
+  font-size:28px;
+  color:#7dd3fc;
+}
+
+.nav-links{
+  display:flex;
+  gap:12px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+  padding:8px 20px;
+  border-radius:999px;
+  border:2px solid #22d3ee;
+  font-size:15px;
+  font-weight:500;
+}
+
+.nav-links a:hover{
+  background:#22d3ee;
+  color:#16161e;
+}
+
+.nav-links a.active{
+  background:#22d3ee;
+  color:#16161e;
+}
+
+/* NAV PROFILE PICTURE */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.nav-profile{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid #22d3ee;
+  box-shadow:0 0 12px rgba(34,211,238,0.25);
+  flex-shrink:0;
+  transition:0.3s;
+}
+
+.nav-profile:hover{
+  box-shadow:0 0 20px rgba(34,211,238,0.5);
+  transform:scale(1.1);
+}
+
+.nav-profile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 35%;
+}
+
+/* HERO — centered column layout */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  max-width:900px;
+  margin:auto;
+  padding:160px 40px 100px;
+  gap:30px;
+}
+
+/* PROFILE CIRCLE — top of hero */
+.profile-circle{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(34,211,238,0.35);
+  border:3px solid rgba(34,211,238,0.4);
+  flex-shrink:0;
+}
+
+.profile-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 35%;
+}
+
+.hero-text{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.hero p{
+  color:#7dd3fc;
+  font-size:22px;
+  letter-spacing:4px;
+  margin-bottom:20px;
+}
+
+.hero h2{
+  font-size:72px;
+  font-weight:900;
+  line-height:1.1;
+  margin-bottom:25px;
+}
+
+.hero h3{
+  font-size:34px;
+  margin-bottom:25px;
+}
+
+.hero h3 span{
+  color:#7dd3fc;
+}
+
+.hero-desc{
+  color:#cbd5e1;
+  font-size:18px;
+  line-height:1.9;
+  margin-bottom:40px;
+}
+
+/* BUTTONS */
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+}
+
+.btn-primary,
+.btn-secondary,
+.project-card,
+.socials a{
+  transition:0.3s ease;
+}
+
+.btn-primary{
+  background:#22d3ee;
+  color:#16161e;
+  padding:18px 32px;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.btn-primary:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(34,211,238,0.5);
+}
+
+.btn-secondary{
+  border:1px solid rgba(34,211,238,0.2);
+  padding:18px 32px;
+  border-radius:20px;
+  text-decoration:none;
+  color:white;
+}
+
+.btn-secondary:hover{
+  transform:scale(1.05);
+  background:rgba(34,211,238,0.1);
+}
+
+/* SECTIONS */
+section{
+  padding:100px 40px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-title{
+  font-size:48px;
+  margin-bottom:55px;
+}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.card{
+  background:rgba(31,35,53,0.7);
+  padding:30px;
+  border-radius:25px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card h4{
+  font-size:18px;
+  margin-bottom:10px;
+  color:#7dd3fc;
+}
+
+.card p{
+  color:#cbd5e1;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.project-card h4{
+  font-size:18px;
+  margin:14px 0 8px;
+  color:#7dd3fc;
+}
+
+.project-card p{
+  color:#cbd5e1;
+  font-size:14px;
+  line-height:1.7;
+}
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+
+.project-card{
+  background:rgba(31,35,53,0.7);
+  padding:25px;
+  border-radius:25px;
+}
+
+.project-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px rgba(34,211,238,0.2);
+}
+
+.project-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+}
+
+/* CONTACT PROFILE — kecil di atas contact */
+.contact-profile{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  margin-bottom:50px;
+}
+
+.contact-profile-circle{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid rgba(34,211,238,0.4);
+  box-shadow:0 0 20px rgba(34,211,238,0.2);
+}
+
+.contact-profile-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 35%;
+}
+
+.contact-profile-name{
+  font-size:18px;
+  font-weight:600;
+  color:#7dd3fc;
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  font-size:40px;
+}
+
+.socials a:hover{
+  transform:scale(1.3);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  color:#9ca3af;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero h2{
+    font-size:48px;
+  }
+
+  .about-grid,
+  .project-grid{
+    grid-template-columns:1fr;
+  }
+
+  nav{
+    padding:18px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h1>Muhammad Fadliilah</h1>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about" class="active">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-profile">
+      <img src="profile.jpeg" alt="Profile">
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — foto profil besar di paling atas -->
+<section class="hero">
+
+  <!-- Foto profil besar di paling atas -->
+  <div class="profile-circle">
+    <img src="profile.jpeg" alt="Profile Photo">
+  </div>
+
+  <div class="hero-text">
+    <p>Hello, I'm</p>
+    <h2>Muhammad Fadliilah</h2>
+    <h3>Arduino & <span>Web Developer</span></h3>
+    <div class="hero-desc">
+      Saya membuat website, Arduino project, dan UI modern.
+    </div>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Contact Me</a>
+      <a href="#projects" class="btn-secondary">View Projects</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h3 class="section-title">About Me</h3>
+    <div class="about-grid">
+      <div class="card">
+        <h4>Frontend Dev</h4>
+        <p>Membangun tampilan website yang modern, responsif, dan interaktif menggunakan HTML, CSS, dan JavaScript.</p>
+      </div>
+      <div class="card">
+        <h4>Arduino & IoT</h4>
+        <p>Merancang dan memprogram perangkat keras berbasis Arduino untuk otomasi dan sistem Internet of Things.</p>
+      </div>
+      <div class="card">
+        <h4>UI Design</h4>
+        <p>Mendesain antarmuka pengguna yang estetis dan intuitif dengan fokus pada pengalaman pengguna yang nyaman.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h3 class="section-title">Projects</h3>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="Smart Home Control.jpg" alt="Smart Home">
+        <h4>Smart Home</h4>
+        <p>Sistem kontrol rumah pintar berbasis Arduino yang memungkinkan pengguna mengatur perangkat listrik secara otomatis maupun manual melalui aplikasi.</p>
+      </div>
+      <div class="project-card">
+        <img src="Timer Project.webp" alt="Timer Automation">
+        <h4>Timer Automation</h4>
+        <p>Proyek otomasi berbasis timer menggunakan Arduino untuk menjadwalkan dan mengontrol perangkat secara otomatis sesuai waktu yang ditentukan.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact">
+
+    <!-- Foto profil kecil di atas Contact -->
+    <div class="contact-profile">
+      <div class="contact-profile-circle">
+        <img src="profile.jpeg" alt="Profile Photo">
+      </div>
+      <span class="contact-profile-name">Muhammad Fadliilah</span>
+    </div>
+
+    <h3 class="section-title">Contact</h3>
+    <p>Jangan ragu untuk menghubungi saya kapan saja!</p>
+    <p>Let's build something great together.</p>
+
+    <div class="socials">
+      <a href="https://github.com/PadyL17"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.instagram.com/pdllhhhhh_/"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/muhammad-fadliilah/"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://wa.me/6281239098522"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Portfolio
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if(window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
