@@ -132,8 +132,8 @@ nav h1{
 
 /* PROFILE CIRCLE — top of hero */
 .profile-circle{
-  width:300px;
-  height:300px;
+  width:180px;
+  height:180px;
   border-radius:50%;
   overflow:hidden;
   box-shadow:0 0 60px rgba(34,211,238,0.35);
@@ -237,7 +237,7 @@ section{
 
 .section-title{
   font-size:48px;
-  margin-bottom:55px;
+  margin-bottom:50px;
 }
 
 /* ABOUT */
@@ -316,12 +316,12 @@ section{
   flex-direction:column;
   align-items:center;
   gap:12px;
-  margin-bottom:50px;
+  margin-bottom:40px;
 }
 
 .contact-profile-circle{
-  width:150px;
-  height:150px;
+  width:90px;
+  height:90px;
   border-radius:50%;
   overflow:hidden;
   border:2px solid rgba(34,211,238,0.4);
@@ -372,7 +372,34 @@ footer{
   }
 
   nav{
-    padding:18px 24px;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    padding:14px 20px;
+  }
+
+  nav h1{
+    font-size:22px;
+    width:100%;
+    text-align:center;
+  }
+
+  .nav-right{
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    width:100%;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .nav-links a{
+    font-size:13px;
+    padding:6px 14px;
   }
 }
 </style>
@@ -382,15 +409,17 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <h1>Muhammad Fadliilah</h1>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="nav-profile">
+      <img src="profile.jpeg" alt="Profile">
+    </div>
+    <h1>Muhammad Fadliilah</h1>
+  </div>
   <div class="nav-right">
     <div class="nav-links">
       <a href="#about" class="active">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-profile">
-      <img src="profile.jpeg" alt="Profile">
     </div>
   </div>
 </nav>
@@ -454,7 +483,6 @@ footer{
         <h4>Timer Automation</h4>
         <p>Proyek otomasi berbasis timer menggunakan Arduino untuk menjadwalkan dan mengontrol perangkat secara otomatis sesuai waktu yang ditentukan.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -472,8 +500,6 @@ footer{
     </div>
 
     <h3 class="section-title">Contact</h3>
-    <p>Jangan ragu untuk menghubungi saya kapan saja!</p>
-    <p>Let's build something great together.</p>
 
     <div class="socials">
       <a href="https://github.com/PadyL17"><i class="fa-brands fa-github"></i></a>
